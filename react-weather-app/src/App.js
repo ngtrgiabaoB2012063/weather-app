@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
+import DarkMode from "./components/DarkMode";
 import Forecase from "./components/Forecase";
 import Inputs from "./components/Inputs";
 import TemperatureAndDetails from "./components/TemperatureAndDetails";
@@ -47,27 +48,36 @@ function App() {
     };
 
     return (
-        <div
-            className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl shadow-gray-400 rounded-xl ${formatBackground()}`}
-        >
-            <TopButtons setQuery={setQuery} />
-            <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
+        <div className="body py-8 h-fit">
+            <div
+                className={`mx-auto max-w-screen-md py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 shadow-md shadow-gray-400 rounded-xl ${formatBackground()}`}
+            >
+                <TopButtons setQuery={setQuery} />
+                <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
 
-            {weather && (
-                <>
-                    <TimeAndLocation weather={weather} />
-                    <TemperatureAndDetails weather={weather} />
+                {weather && (
+                    <>
+                        <TimeAndLocation weather={weather} />
+                        <TemperatureAndDetails weather={weather} />
 
-                    <Forecase title="hourly forecast" items={weather.hourly} />
-                    <Forecase title="daily forecast" items={weather.daily} />
-                </>
-            )}
+                        <Forecase
+                            title="hourly forecast"
+                            items={weather.hourly}
+                        />
+                        <Forecase
+                            title="daily forecast"
+                            items={weather.daily}
+                        />
+                    </>
+                )}
 
-            <ToastContainer
-                autoClose={3000}
-                theme="colored"
-                newestOnTop={true}
-            />
+                <ToastContainer
+                    autoClose={3000}
+                    theme="colored"
+                    newestOnTop={true}
+                />
+            </div>
+            <DarkMode />
         </div>
     );
 }
