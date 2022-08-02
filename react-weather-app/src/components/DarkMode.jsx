@@ -14,11 +14,8 @@ export default function DarkMode() {
     };
 
     return (
-        <div className="fixed bottom-5 left-5">
-            <Switch
-                onClick={handleTheme}
-                className="theme-switch"
-            />
+        <div className="fixed sm:hidden bottom-5 left-5">
+            <Switch onClick={handleTheme} className="theme-switch" />
         </div>
     );
 }

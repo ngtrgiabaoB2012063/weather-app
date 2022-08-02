@@ -48,9 +48,9 @@ function App() {
     };
 
     return (
-        <div className="grid place-items-center h-screen m-auto sm:m-2 overflow-hidden max-w-full p-8 body overflow-y-auto">
+        <div className="grid place-items-center max-w-full sm:p-0 body">
             <div
-                className={`py-5 px-32 sm:px-4 bg-gradient-to-br from-cyan-700 to-blue-700 shadow-md shadow-gray-400 rounded-xl ${formatBackground()} sm:bg-red-600 `}
+                className={`my-5 py-5 px-32 sm:px-4 sm:my-0 bg-gradient-to-br from-cyan-700 to-blue-700 shadow-md shadow-gray-400 rounded-xl sm:rounded-none ${formatBackground()} `}
             >
                 <TopButtons setQuery={setQuery} />
                 <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
