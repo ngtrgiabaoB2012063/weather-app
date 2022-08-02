@@ -8,7 +8,7 @@ export default function DarkMode() {
     const handleTheme = () => {
         setTheme((theme) => !theme);
 
-        return theme === true
+        return theme !== true
             ? body.classList.add("bg-slate-800")
             : body.classList.remove("bg-slate-800");
     };
@@ -18,7 +18,6 @@ export default function DarkMode() {
             <Switch
                 onClick={handleTheme}
                 className="theme-switch"
-                defaultChecked
             />
         </div>
     );

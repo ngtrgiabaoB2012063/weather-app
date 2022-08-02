@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
@@ -48,9 +48,9 @@ function App() {
     };
 
     return (
-        <div className="body py-8 h-fit">
+        <div className="grid place-items-center h-screen m-auto sm:m-2 overflow-hidden max-w-full p-8 body overflow-y-auto">
             <div
-                className={`mx-auto max-w-screen-md py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 shadow-md shadow-gray-400 rounded-xl ${formatBackground()}`}
+                className={`py-5 px-32 sm:px-4 bg-gradient-to-br from-cyan-700 to-blue-700 shadow-md shadow-gray-400 rounded-xl ${formatBackground()} sm:bg-red-600 `}
             >
                 <TopButtons setQuery={setQuery} />
                 <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
@@ -71,13 +71,8 @@ function App() {
                     </>
                 )}
 
-                <ToastContainer
-                    autoClose={3000}
-                    theme="colored"
-                    newestOnTop={true}
-                />
+                <DarkMode />
             </div>
-            <DarkMode />
         </div>
     );
 }
