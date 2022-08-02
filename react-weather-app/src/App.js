@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
@@ -18,16 +18,13 @@ function App() {
 
     useEffect(() => {
         const fetchWeather = async () => {
-            const message = query.q ? query.q : "Current location.";
+            const message = query.q ? query.q : "current location.";
 
             toast.info("Fetching weather for " + message);
 
-            await getFormattedWeatherData({
-                ...query,
-                units,
-            }).then((data) => {
+            await getFormattedWeatherData({ ...query, units }).then((data) => {
                 toast.success(
-                    "Successfully fetched weather for " + data.country
+                    `Successfully fetched weather for ${data.name}, ${data.country}.`
                 );
 
                 setWeather(data);
@@ -38,11 +35,9 @@ function App() {
     }, [query, units]);
 
     const formatBackground = () => {
+        if (!weather) return "from-cyan-700 to-blue-700";
         const threshold = units === "metric" ? 20 : 60;
-
-        if (!weather || weather.temp <= threshold) {
-            return "from-cyan-700 to-blue-700";
-        }
+        if (weather.temp <= threshold) return "from-cyan-700 to-blue-700";
 
         return "from-yellow-700 to-orange-700";
     };
@@ -70,7 +65,11 @@ function App() {
                         />
                     </>
                 )}
-
+                <ToastContainer
+                    autoClose={5000}
+                    theme="colored"
+                    newestOnTop={true}
+                />
                 <DarkMode />
             </div>
         </div>
